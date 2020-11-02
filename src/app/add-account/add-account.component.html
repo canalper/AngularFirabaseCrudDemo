@@ -1,0 +1,21 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <form [formGroup]="accountFrom"> 
+        <mat-form-field appearance="outline" >
+          <input matInput placeholder="Name" formControlName="name" name='name' >
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+          <input matInput placeholder="Address" formControlName="address" name='address' >
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Company</mat-label>
+          <mat-select formControlName="company" name='company' placeholder="select company" >
+            <mat-option>None</mat-option>
+            <mat-option value="Teknosa">Teknosa</mat-option>
+            <mat-option value="Vatan">Vatan Bilgisayar</mat-option>
+          </mat-select> 
+        </mat-form-field>
+        <button mat-stroked-button color="accent" class="btn-block" (click)='add()'>Add Account</button>
+    </form>
+  </div>
+</div>
