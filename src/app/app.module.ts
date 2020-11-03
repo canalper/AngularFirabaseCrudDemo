@@ -49,7 +49,7 @@ import { UserService } from './_services/user.service';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule
   ],
-  declarations: [	
+  declarations: [
     AppComponent,
     AdminLayoutComponent,
       LoginComponent
