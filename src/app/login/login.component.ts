@@ -14,8 +14,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup
-  // username: String;
-  // password: String;
   error = '';
   users;
 
@@ -26,7 +24,7 @@ export class LoginComponent implements OnInit {
               private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    if(this.userService.isLoggedIn)
+    if (this.userService.isLoggedIn)
     {
       this.router.navigate(['dashboard']);
     }

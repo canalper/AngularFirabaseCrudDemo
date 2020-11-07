@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AccountService } from 'app/_services/account.service';
+import { CancelConfirmDialogComponent } from '../cancel-confirm-dialog/cancel-confirm-dialog.component';
 
 @Component({
   selector: 'app-account',
@@ -9,7 +11,7 @@ import { AccountService } from 'app/_services/account.service';
 export class AccountComponent implements OnInit {
   dataSource;
   displayedColumns: string[];
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.displayedColumns = ['imageUrl', 'name', 'company', 'address', 'action'];
@@ -22,7 +24,16 @@ export class AccountComponent implements OnInit {
     });
   }
   delete(element): void {
-    this.accountService.delete(element);
+    const ref: MatDialogRef<CancelConfirmDialogComponent> = this.dialog.open(CancelConfirmDialogComponent,{
+      maxWidth: '900px',
+      maxHeight: '600px',
+      });
+    ref.afterClosed().subscribe( (data) => {
+    if (data.clicked === 'Ok') {
+      this.accountService.delete(element);
+     } else if (data.clicked === 'Cancel') {
+     }
+    },
+    (err) => {});
   }
-
 }

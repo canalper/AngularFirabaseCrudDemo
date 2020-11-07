@@ -13,13 +13,8 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { AccountComponent } from '../../account/account.component';
 import { AddAccountComponent } from '../../add-account/add-account.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatRippleModule} from '@angular/material/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatTableModule } from '@angular/material/table';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSelectModule} from '@angular/material/select';
+import { AngularMaterialModule } from '../../angular-material.module';
+import { CancelConfirmDialogComponent } from '../../cancel-confirm-dialog/cancel-confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -27,13 +22,7 @@ import {MatSelectModule} from '@angular/material/select';
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule,
-    MatRippleModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTooltipModule,
-    MatTableModule,
+    AngularMaterialModule
   ],
   declarations: [
     DashboardComponent,
@@ -45,8 +34,8 @@ import {MatSelectModule} from '@angular/material/select';
     NotificationsComponent,
     UpgradeComponent,
     AccountComponent,
-    AddAccountComponent
-  ]
-})
+    AddAccountComponent,
+    CancelConfirmDialogComponent
+  ]})
 
 export class AdminLayoutModule {}

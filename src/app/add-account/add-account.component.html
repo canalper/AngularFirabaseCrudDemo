@@ -1,21 +1,47 @@
 <div class="main-content">
   <div class="container-fluid">
-    <form [formGroup]="accountFrom"> 
-        <mat-form-field appearance="outline" >
-          <input matInput placeholder="Name" formControlName="name" name='name' >
-        </mat-form-field>
-        <mat-form-field appearance="outline" >
-          <input matInput placeholder="Address" formControlName="address" name='address' >
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Company</mat-label>
-          <mat-select formControlName="company" name='company' placeholder="select company" >
-            <mat-option>None</mat-option>
-            <mat-option value="Teknosa">Teknosa</mat-option>
-            <mat-option value="Vatan">Vatan Bilgisayar</mat-option>
-          </mat-select> 
-        </mat-form-field>
-        <button mat-stroked-button color="accent" class="btn-block" (click)='add()'>Add Account</button>
-    </form>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          Create a new account
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="accountFrom"> 
+            <mat-form-field appearance="outline" >
+              <input matInput placeholder="Name" required formControlName="name" name='name' >
+                <mat-error
+                  *ngIf="accountFrom.get('name').hasError('required')">
+                  Name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+              <input matInput placeholder="Address" required formControlName="address" name='address' >
+              <mat-error
+                  *ngIf="accountFrom.get('address').hasError('required')">
+                  Address is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Company</mat-label>
+              <mat-select formControlName="company" name='company' placeholder="select company" required >
+                <mat-option>None</mat-option>
+                <mat-option value="Teknosa">Teknosa</mat-option>
+                <mat-option value="Vatan">Vatan Bilgisayar</mat-option>
+              </mat-select> 
+            </mat-form-field>
+            <div >
+              <mat-checkbox checked="true" formControlName="locationAccuracy" name='locationAccuracy' appearance="outline"
+                labelPosition="before" disableRipple="true">
+                Location Accuracy
+              </mat-checkbox>
+            </div>
+            <div style="height: 400px;" id="map"></div>
+           </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary"  (click)='add()' [disabled]="!accountFrom.valid">Add Account</button>
+  </mat-card-actions>
+    </mat-card>
   </div>
 </div>
