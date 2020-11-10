@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AccountService {
 
+  private accountList: Account[];
   constructor(private firestore: AngularFirestore) { }
 
   getList() {
@@ -40,9 +41,9 @@ export class AccountService {
       'features': []
     };
 
-     this.firestore
+   return  this.firestore
       .collection('account')
-      .valueChanges();
+      .snapshotChanges();
   }
 
 }
