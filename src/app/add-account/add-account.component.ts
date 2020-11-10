@@ -6,12 +6,11 @@ import { Router } from '@angular/router';
 
 declare const google: any;
 
-interface Marker {
-  lat: number;
-  lng: number;
-  label?: string;
-  draggable?: boolean;
-  }
+
+  interface Location {
+    lat: number;
+    lng: number;
+}
 @Component({
   selector: 'app-add-account',
   templateUrl: './add-account.component.html',
@@ -20,6 +19,8 @@ interface Marker {
 export class AddAccountComponent implements OnInit {
   accountFrom: FormGroup;
   account: Account;
+  lat: number;
+  lon: number;
   get f() { return this.accountFrom.controls; }
 
   constructor(fb: FormBuilder, private accountService: AccountService, private router: Router) {
@@ -40,11 +41,18 @@ export class AddAccountComponent implements OnInit {
     if (this.accountFrom.invalid) {
       return;
     }
+    if (typeof this.lat === 'undefined')
+    {
+        alert('Select location from map.');
+        return;
+    }
     this.account = {name: this.f.name.value,
       address: this.f.address.value,
       company: this.f.company.value,
       locationAccuracy: this.f.locationAccuracy.value,
-      imageUrl: 'https://source.unsplash.com/random/480x480'};
+      imageUrl: 'https://source.unsplash.com/random/480x480',
+      latitude: this.lat,
+      longitude: this.lon};
 
     this.accountService.add(this.account).then(data => {
         this.router.navigate(['account']);
@@ -75,7 +83,10 @@ export class AddAccountComponent implements OnInit {
       infoWindow = new google.maps.InfoWindow({
         position: mapsMouseEvent.latLng,
 
-      }); console.log(mapsMouseEvent.latLng);
+      });
+      let position: Location = JSON.parse(JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2));
+      this.lat = position.lat;
+      this.lon = position.lng;
       infoWindow.setContent(
         JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
       );

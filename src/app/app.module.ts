@@ -23,6 +23,7 @@ import {
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './_services/user.service';
+import { AccountMapComponent } from './account-map/account-map.component';
 
 @NgModule({
   imports: [
@@ -41,7 +42,7 @@ import { UserService } from './_services/user.service';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule
   ],
-  declarations: [
+  declarations: [	
     AppComponent,
     AdminLayoutComponent,
     LoginComponent

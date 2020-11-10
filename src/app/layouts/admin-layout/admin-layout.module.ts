@@ -13,6 +13,7 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { AccountComponent } from '../../account/account.component';
 import { AddAccountComponent } from '../../add-account/add-account.component';
+import { AccountMapComponent } from '../../account-map/account-map.component';
 import { AngularMaterialModule } from '../../angular-material.module';
 import { CancelConfirmDialogComponent } from '../../cancel-confirm-dialog/cancel-confirm-dialog.component';
 
@@ -35,7 +36,8 @@ import { CancelConfirmDialogComponent } from '../../cancel-confirm-dialog/cancel
     UpgradeComponent,
     AccountComponent,
     AddAccountComponent,
-    CancelConfirmDialogComponent
+    CancelConfirmDialogComponent,
+    AccountMapComponent
   ]})
 
 export class AdminLayoutModule {}

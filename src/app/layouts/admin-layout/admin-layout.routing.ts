@@ -11,6 +11,7 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { AccountComponent } from '../../account/account.component';
 import { AddAccountComponent } from '../../add-account/add-account.component';
+import { AccountMapComponent } from '../../account-map/account-map.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -64,5 +65,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'account',        component: AccountComponent },
-    { path: 'addAccount',        component: AddAccountComponent }
+    { path: 'add-account',     component: AddAccountComponent },
+    { path: 'account-map',     component: AccountMapComponent }
 ];
